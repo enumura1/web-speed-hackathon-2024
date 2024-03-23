@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
-    "build:clean": "rm -rf ./dist",
-    "build:copy": "cp -r ./assets ./dist/assets",
+    "build:clean": "rimraf ./dist",
+    "build:copy": "copy ./assets ./dist/assets",
     "build:tsup": "tsup"
   },
   "dependencies": {
@@ -38,6 +38,7 @@
     "@types/serviceworker": "0.0.83",
     "esbuild-plugin-polyfill-node": "0.3.0",
     "pkg-dir": "5.0.0",
+    "rimraf": "3.0.2",
     "tsup": "8.0.1"
   }
 }
