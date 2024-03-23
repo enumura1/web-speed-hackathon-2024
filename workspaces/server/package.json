@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
-    "build:clean": "rm ./dist",
-    "build:copy": "cp ./seeds/images ./dist/images",
+    "build:clean": "rm -rf ./dist",
+    "build:copy": "cp -r ./seeds/images ./dist/images",
     "build:tsup": "tsup",
     "start": "node ./dist/server.js"
   },
