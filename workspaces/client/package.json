@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
-    "build:clean": "rimraf ./dist",
-    "build:copy": "copy ./assets ./dist/assets",
+    "build:clean": "rm ./dist",
+    "build:copy": "cp ./assets ./dist/assets",
     "build:tsup": "tsup"
   },
   "dependencies": {
