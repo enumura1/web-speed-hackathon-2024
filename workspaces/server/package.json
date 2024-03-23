@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
-    "build:clean": "rm -rf ./dist",
-    "build:copy": "cp -r ./seeds/images ./dist/images",
+    "build:clean": "rimraf ./dist",
+    "build:copy": "copy ./seeds/images ./dist/images",
     "build:tsup": "tsup",
     "start": "node ./dist/server.js"
   },
@@ -51,6 +51,7 @@
     "@types/uuid": "9.0.7",
     "drizzle-kit": "0.20.9",
     "pkg-dir": "5.0.0",
+    "rimraf": "3.0.2",
     "tsup": "8.0.1"
   }
 }
