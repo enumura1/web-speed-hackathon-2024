@@ -1,5 +1,3 @@
-// import './side-effects';
-
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { SWRConfig } from 'swr';
@@ -11,12 +9,11 @@ import { registerServiceWorker } from './utils/registerServiceWorker';
 
 const main = async () => {
   await registerServiceWorker();
-  // await preloadImages();
 
   const root = document.getElementById('root');
 
   if(root == null) {
-    throw new Error('root element not found');
+    throw new Error('root elem none');
   }else if (window.location.pathname.startsWith('/admin')) {
       ReactDOM.createRoot(root).render(<AdminApp />);
   } else {
