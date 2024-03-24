@@ -5,7 +5,6 @@ const _Wrapper = styled.div`
 `;
 
 const _Separator = styled.img`
-  display: block;
   width: 100%;
   border-top: 1px solid #A1A1A4;
 `;
