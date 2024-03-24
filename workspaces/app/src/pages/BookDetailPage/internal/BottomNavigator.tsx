@@ -1,18 +1,10 @@
-import { animated, useSpring } from '@react-spring/web';
 import { useCallback } from 'react';
-import { styled } from 'styled-components';
+import { keyframes, styled } from 'styled-components';
 
 import { Link } from '../../../foundation/components/Link';
 import { Color, Radius, Space } from '../../../foundation/styles/variables';
 
 import { FavButton } from './FavButton';
-
-const _Wrapper = styled.div`
-  position: fixed;
-  bottom: ${Space * 4}px;
-  left: 50%;
-  transform: translateX(-50%);
-`;
 
 const _Content = styled.div`
   display: flex;
@@ -35,6 +27,23 @@ const _ReadLink = styled(Link)`
   flex-shrink: 0;
 `;
 
+const keyframe1 = keyframes`
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const _Wrapper = styled.div`
+  position: fixed;
+  bottom: ${Space * 4}px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ${keyframe1} 0.5s;
+`;
+
 type Props = {
   bookId: string;
   isFavorite: boolean;
@@ -43,10 +52,6 @@ type Props = {
 };
 
 export const BottomNavigator: React.FC<Props> = ({ bookId, isFavorite, latestEpisodeId, onClickFav }) => {
-  const props = useSpring({
-    from: { transform: 'translateY(100%)' },
-    to: { transform: 'translateY(0)' },
-  });
 
   const handleFavClick = useCallback(() => {
     onClickFav();
@@ -54,12 +59,10 @@ export const BottomNavigator: React.FC<Props> = ({ bookId, isFavorite, latestEpi
 
   return (
     <_Wrapper>
-      <animated.div style={props}>
         <_Content>
           <FavButton enabled={isFavorite} onClick={handleFavClick} />
           <_ReadLink to={`/books/${bookId}/episodes/${latestEpisodeId}`}>最新話を読む</_ReadLink>
         </_Content>
-      </animated.div>
     </_Wrapper>
   );
 };
